@@ -22,9 +22,8 @@ tasksRouter.get('/:id', async (c) => {
 
 tasksRouter.post('/', async (c) => {
   const body = await c.req.parseBody<TaskInput>();
-  const newTask = await createTask(body);
-  const tasks = await getTasks();
-  return c.html(<TaskList tasks={[newTask, ...tasks]} />);
+  const tasks = await createTask(body);
+  return c.html(<TaskList tasks={tasks} />);
 });
 
 tasksRouter.put('/:id', async (c) => {

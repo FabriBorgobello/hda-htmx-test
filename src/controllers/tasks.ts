@@ -12,8 +12,8 @@ export async function getTaskById(id: Task['id']) {
 
 export async function createTask(task: TaskInput) {
   const newTask: Task = { ...task, id: uuid(), status: 'OPEN' as const };
-  Tasks.push(newTask);
-  return newTask;
+  Tasks.unshift(newTask);
+  return Tasks;
 }
 
 export async function updateTask(id: Task['id'], task: TaskUpdate) {
