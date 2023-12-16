@@ -1,5 +1,5 @@
 import type { FC } from 'hono/jsx';
-import { NavBar } from '../partials/NavBar';
+import { NavBar } from '@/jsx/partials/NavBar';
 
 export const Layout: FC = ({ children }) => {
   return (

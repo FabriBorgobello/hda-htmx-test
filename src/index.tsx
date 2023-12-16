@@ -4,8 +4,8 @@ import { cors } from 'hono/cors';
 import { Hono } from 'hono';
 import { serveStatic } from '@hono/node-server/serve-static';
 import { jsxRenderer, useRequestContext } from 'hono/jsx-renderer';
-import { Layout } from './jsx/pages/Layout';
-import { Home } from './jsx/pages/Home';
+import { Layout } from '@/jsx/pages/Layout';
+import { Home } from '@/jsx/pages/Home';
 
 const app = new Hono();
 
