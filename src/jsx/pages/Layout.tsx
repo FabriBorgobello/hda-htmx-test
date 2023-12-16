@@ -1,5 +1,4 @@
 import type { FC } from 'hono/jsx';
-import { NavBar } from '@/jsx/partials/NavBar';
 
 export const Layout: FC = ({ children }) => {
   return (
@@ -11,8 +10,7 @@ export const Layout: FC = ({ children }) => {
           <title>My App</title>
           <script src="https://cdn.tailwindcss.com"></script>
         </head>
-        <NavBar />
-        <div>{children}</div>
+        {children}
       </body>
     </html>
   );
