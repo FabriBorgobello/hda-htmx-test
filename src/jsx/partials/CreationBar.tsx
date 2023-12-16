@@ -12,14 +12,17 @@ export const CreationBar: FC = () => {
                 class="rounded-md border-2 border-gray-100 px-3 py-2 text-sm"
                 name="title"
                 placeholder="Add a task title"
+                required
             />
             <input
                 class="rounded-md border-2 border-gray-100 px-3 py-2 text-sm"
                 name="description"
                 placeholder="Add a task description"
+                required
             />
             <select
                 name="category"
+                required
                 class="rounded-md border-2 border-gray-100 px-3 py-2 text-sm"
             >
                 {TaskCategories.map((category) => (

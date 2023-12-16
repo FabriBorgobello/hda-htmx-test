@@ -6,7 +6,7 @@ import { Tasks } from '@/data';
 
 export const Home: FC = () => {
     return (
-        <main class="container mx-auto space-y-6 p-4 md:p-6">
+        <main class="container mx-auto max-w-5xl space-y-6 p-4 md:p-6">
             <Header />
             <TaskList tasks={Tasks} />
             <Filters />
