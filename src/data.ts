@@ -1,4 +1,8 @@
-import { Task } from './types';
+import { Task, TaskCategory, TaskStatus } from './types';
+
+export const TaskStatuses: TaskStatus[] = ['OPEN', 'IN_PROGRESS', 'DONE'];
+
+export const TaskCategories: TaskCategory[] = ['WORK', 'PERSONAL', 'SHOPPING', 'OTHER'];
 
 export const Tasks: Task[] = [
   {

@@ -1,7 +1,7 @@
-import { TaskType } from '@/types';
+import { Task } from '@/types';
 import type { FC } from 'hono/jsx';
 
-export const TaskItem: FC<{ task: TaskType }> = ({ task }) => {
+export const TaskItem: FC<{ task: Task }> = ({ task }) => {
   return (
     <div class="rounded-lg border bg-card text-card-foreground shadow-sm" data-v0-t="card">
       <div class="p-6 flex justify-between items-center">
