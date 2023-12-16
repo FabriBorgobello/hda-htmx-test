@@ -2,14 +2,14 @@ import { createTask, deleteTask, getTaskById, getTasks, updateTask } from '@/con
 import { TaskInput, TaskUpdate } from '@/types';
 import { Hono } from 'hono';
 
-const tasks = new Hono();
+export const tasksRouter = new Hono();
 
-tasks.get('/', async (c) => {
+tasksRouter.get('/', async (c) => {
   const tasks = await getTasks();
   return c.json(tasks);
 });
 
-tasks.get('/:id', async (c) => {
+tasksRouter.get('/:id', async (c) => {
   const id = c.req.param('id');
   const task = await getTaskById(id);
   if (!task) {
@@ -19,13 +19,13 @@ tasks.get('/:id', async (c) => {
   }
 });
 
-tasks.post('/', async (c) => {
+tasksRouter.post('/', async (c) => {
   const body = await c.req.json<TaskInput>();
   const newTask = await createTask(body);
   return c.json(newTask, 201);
 });
 
-tasks.put('/:id', async (c) => {
+tasksRouter.put('/:id', async (c) => {
   const id = c.req.param('id');
   const body = await c.req.json<TaskUpdate>();
   const task = await updateTask(id, body);
@@ -36,7 +36,7 @@ tasks.put('/:id', async (c) => {
   }
 });
 
-tasks.delete('/:id', async (c) => {
+tasksRouter.delete('/:id', async (c) => {
   const id = c.req.param('id');
   const task = await deleteTask(id);
   if (!task) {

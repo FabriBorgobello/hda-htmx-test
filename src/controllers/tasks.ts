@@ -7,24 +7,27 @@ export async function getTasks() {
 }
 
 export async function getTaskById(id: Task['id']) {
-  return Tasks.find((t) => t.id === id);
+  return Tasks.find((task) => task.id === id);
 }
 
 export async function createTask(task: TaskInput) {
-  const newTask: Task = { ...task, id: uuid() };
+  const newTask: Task = { ...task, id: uuid(), status: 'OPEN' as const };
   Tasks.push(newTask);
   return newTask;
 }
 
 export async function updateTask(id: Task['id'], task: TaskUpdate) {
-  const index = Tasks.findIndex((t) => t.id === id);
-  if (index === -1) return undefined;
-  Tasks[index] = { ...Tasks[index], ...task };
-  return Tasks[index];
+  const taskIndex = Tasks.findIndex((task) => task.id === id);
+  if (taskIndex === -1) return undefined;
+  const updatedTask = { ...Tasks[taskIndex], ...task };
+  Tasks[taskIndex] = updatedTask;
+  return updatedTask;
 }
 
 export async function deleteTask(id: Task['id']) {
-  const index = Tasks.findIndex((t) => t.id === id);
-  if (index === -1) return undefined;
-  Tasks.splice(index, 1);
+  const taskIndex = Tasks.findIndex((task) => task.id === id);
+  if (taskIndex === -1) return undefined;
+  const deletedTask = Tasks[taskIndex];
+  Tasks.splice(taskIndex, 1);
+  return deletedTask;
 }
