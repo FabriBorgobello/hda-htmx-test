@@ -7,6 +7,9 @@ export const CreationBar: FC = () => {
             hx-post="/api/tasks"
             hx-swap="outerHTML"
             hx-target="#task-list"
+            hx-indicator="#spinner"
+            hx-ext="disable-element"
+            hx-disable-element="#add-task-button"
         >
             <input
                 class="rounded-md border-2 border-gray-100 px-3 py-2 text-sm"
@@ -30,11 +33,18 @@ export const CreationBar: FC = () => {
                 ))}
             </select>
             <button
-                class="rounded-md bg-slate-50 px-3 py-2 text-sm text-black transition-all hover:bg-slate-900 hover:text-white
-        active:scale-95 active:bg-slate-800 active:text-white"
+                class="flex justify-center gap-2 rounded-md bg-slate-50 px-3 py-2 text-sm text-black transition-all hover:bg-slate-900 hover:text-white active:scale-95 active:bg-slate-800 active:text-white disabled:cursor-not-allowed disabled:bg-gray-100 disabled:hover:bg-gray-100 disabled:hover:text-black disabled:active:scale-100 disabled:active:bg-gray-500 disabled:active:text-black"
                 type="submit"
+                id="add-task-button"
             >
-                Add Task
+                <span>Add Task</span>
+                <img
+                    id="spinner"
+                    height="20"
+                    width="20"
+                    class="htmx-indicator hidden"
+                    src="./static/spinner.svg"
+                />
             </button>
         </form>
     );
