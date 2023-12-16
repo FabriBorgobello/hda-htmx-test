@@ -1,4 +1,5 @@
 import { createTask, deleteTask, getTaskById, getTasks, updateTask } from '@/controllers/tasks';
+import { TaskList } from '@/jsx/partials/TaskList';
 import { TaskInput, TaskUpdate } from '@/types';
 import { Hono } from 'hono';
 
@@ -20,9 +21,10 @@ tasksRouter.get('/:id', async (c) => {
 });
 
 tasksRouter.post('/', async (c) => {
-  const body = await c.req.json<TaskInput>();
+  const body = await c.req.parseBody<TaskInput>();
   const newTask = await createTask(body);
-  return c.json(newTask, 201);
+  const tasks = await getTasks();
+  return c.html(<TaskList tasks={[newTask, ...tasks]} />);
 });
 
 tasksRouter.put('/:id', async (c) => {
