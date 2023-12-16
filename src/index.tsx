@@ -19,8 +19,8 @@ app.use('/static/*', serveStatic({ root: './' }));
 
 // JSX Renderer
 app.get(
-  '*',
-  jsxRenderer(({ children }) => <Layout>{children}</Layout>),
+    '*',
+    jsxRenderer(({ children }) => <Layout>{children}</Layout>)
 );
 
 // Routes
@@ -28,5 +28,5 @@ app.get('/', (c) => c.render(<Home />));
 app.route('/api/tasks', tasksRouter);
 
 serve(app, ({ port }) => {
-  console.log(`Server is listening on http://localhost:${port}`);
+    console.log(`Server is listening on http://localhost:${port}`);
 });

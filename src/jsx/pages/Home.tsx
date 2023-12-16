@@ -5,11 +5,11 @@ import { Filters } from '@/jsx/partials/Filters';
 import { Tasks } from '@/data';
 
 export const Home: FC = () => {
-  return (
-    <main class="container mx-auto p-4 md:p-6 space-y-6">
-      <Header />
-      <TaskList tasks={Tasks} />
-      <Filters />
-    </main>
-  );
+    return (
+        <main class="container mx-auto space-y-6 p-4 md:p-6">
+            <Header />
+            <TaskList tasks={Tasks} />
+            <Filters />
+        </main>
+    );
 };
