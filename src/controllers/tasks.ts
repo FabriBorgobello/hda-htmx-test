@@ -27,7 +27,6 @@ export async function updateTask(id: Task['id'], task: TaskUpdate) {
 export async function deleteTask(id: Task['id']) {
     const taskIndex = Tasks.findIndex((task) => task.id === id);
     if (taskIndex === -1) return undefined;
-    const deletedTask = Tasks[taskIndex];
     Tasks.splice(taskIndex, 1);
-    return deletedTask;
+    return Tasks;
 }

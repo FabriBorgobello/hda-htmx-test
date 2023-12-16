@@ -45,10 +45,10 @@ tasksRouter.put('/:id', async (c) => {
 
 tasksRouter.delete('/:id', async (c) => {
     const id = c.req.param('id');
-    const task = await deleteTask(id);
-    if (!task) {
+    const tasks = await deleteTask(id);
+    if (!tasks) {
         return c.json({ message: 'Task not found' }, 404);
     } else {
-        return c.json({}, 204);
+        return c.html(<TaskList tasks={tasks} />);
     }
 });
