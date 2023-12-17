@@ -1,4 +1,4 @@
-import { TaskCategories } from '@/data';
+import { Categories } from '@/data';
 import { Task } from '@/types';
 import type { FC } from 'hono/jsx';
 
@@ -32,7 +32,7 @@ export const TaskItem: FC<{ task: Task }> = ({ task }) => {
                         onmouseleave="this.classList.toggle('hidden');this.classList.toggle('translate-y-6');this.classList.toggle('opacity-0');"
                     >
                         <ul class="mt-1 flex flex-col rounded border border-gray-100 bg-slate-50 text-black shadow-xl">
-                            {TaskCategories.map((category) => {
+                            {Categories.map((category) => {
                                 if (category === task.category) return;
                                 return (
                                     <CategoryItem

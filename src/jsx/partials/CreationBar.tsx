@@ -1,4 +1,4 @@
-import { TaskCategories } from '@/data';
+import { Categories } from '@/data';
 import type { FC } from 'hono/jsx';
 export const CreationBar: FC = () => {
     return (
@@ -28,7 +28,7 @@ export const CreationBar: FC = () => {
                 required
                 class="rounded-md border-2 border-gray-100 px-3 py-2 text-sm"
             >
-                {TaskCategories.map((category) => (
+                {Categories.map((category) => (
                     <option value={category}>{category}</option>
                 ))}
             </select>

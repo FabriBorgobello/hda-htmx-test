@@ -7,6 +7,8 @@ import { jsxRenderer } from 'hono/jsx-renderer';
 import { Layout } from '@/jsx/pages/Layout';
 import { Home } from '@/jsx/pages/Home';
 import { tasksRouter } from './routes/tasks';
+import { categoriesRouter } from './routes/categories';
+import { statusesRouter } from './routes/statuses';
 
 const app = new Hono();
 
@@ -26,6 +28,8 @@ app.get(
 // Routes
 app.get('/', (c) => c.render(<Home />));
 app.route('/api/tasks', tasksRouter);
+app.route('/api/categories', categoriesRouter);
+app.route('/api/statuses', statusesRouter);
 
 serve(app, ({ port }) => {
     console.log(`Server is listening on http://localhost:${port}`);
