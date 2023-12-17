@@ -1,20 +1,14 @@
 import type { FC } from 'hono/jsx';
-import { TaskItemSkeleton } from './TaskItem';
+import { TaskList } from './TaskList';
+import { getTasks } from '@/controllers/tasks';
 
-export const TaskSection: FC = () => {
+export const TaskSection: FC = async () => {
+    const tasks = await getTasks();
+
     return (
         <section class="space-y-4">
             <h2 class="text-xl font-semibold">Tasks</h2>
-            <div
-                id="task-list"
-                class="flex flex-col space-y-4"
-                hx-trigger="load"
-                hx-get="/api/tasks"
-            >
-                {Array.from(Array(5)).map((_, i) => (
-                    <TaskItemSkeleton />
-                ))}
-            </div>
+            <TaskList tasks={tasks} />
         </section>
     );
 };

@@ -78,11 +78,3 @@ const CategoryItem: FC<{ id: string; category: Task['category'] }> = ({
         </li>
     );
 };
-
-export const TaskItemSkeleton: FC = () => {
-    return (
-        <div class="h-[76px] w-full rounded-md border-2 border-gray-100 bg-gray-200">
-            {/* This is just a placeholder rectangle */}
-        </div>
-    );
-};
