@@ -8,7 +8,10 @@ export const TaskList: FC<{ tasks: Task[] }> = ({ tasks }) => {
     }
 
     return (
-        <div id="task-list" class="flex flex-col space-y-4">
+        <div
+            id="task-list"
+            class="flex flex-col space-y-4 rounded-lg bg-slate-50 p-4"
+        >
             {tasks.map((task) => (
                 <TaskItem task={task} />
             ))}
