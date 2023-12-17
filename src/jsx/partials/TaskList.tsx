@@ -21,7 +21,10 @@ export const TaskList: FC<{ tasks: Task[] }> = ({ tasks }) => {
 
 const TaskListEmptyState: FC = () => {
     return (
-        <div class="flex flex-col items-center justify-center space-y-4">
+        <div
+            id="task-list"
+            class="flex flex-col items-center justify-center space-y-4"
+        >
             <h3 class="text-xl font-semibold">No tasks found</h3>
             <p class="text-gray-500">
                 Try adding a new task or changing your filters.

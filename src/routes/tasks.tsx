@@ -13,7 +13,8 @@ import { Hono } from 'hono';
 export const tasksRouter = new Hono();
 
 tasksRouter.get('/', async (c) => {
-    const tasks = await getTasks();
+    const query = c.req.query();
+    const tasks = await getTasks(query);
     return c.html(<TaskList tasks={tasks} />);
 });
 

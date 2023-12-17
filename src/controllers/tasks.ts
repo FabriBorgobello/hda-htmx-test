@@ -2,7 +2,25 @@ import { Tasks } from '@/data';
 import { Task, TaskInput, TaskUpdate } from '@/types';
 import { uuid } from '@/utils/uuid';
 
-export async function getTasks() {
+export async function getTasks(
+    query: {
+        status?: Task['status'];
+        category?: Task['category'];
+    } = {}
+) {
+    const { status, category } = query;
+
+    if (status && category) {
+        return Tasks.filter(
+            (task) => task.status === status && task.category === category
+        );
+    }
+    if (status) {
+        return Tasks.filter((task) => task.status === status);
+    }
+    if (category) {
+        return Tasks.filter((task) => task.category === category);
+    }
     return Tasks;
 }
 

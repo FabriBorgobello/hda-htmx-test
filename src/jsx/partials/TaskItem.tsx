@@ -6,11 +6,11 @@ export const TaskItem: FC<{ task: Task }> = ({ task }) => {
     return (
         <div
             id={`task-${task.id}`}
-            class="flex w-full items-center justify-between space-x-4 rounded-md border-2 border-gray-100 bg-white p-4 text-sm transition-all hover:bg-slate-50"
+            class="flex w-full flex-col items-center justify-between gap-y-5 space-x-4 rounded-md border-2 border-gray-100 bg-white p-4 text-sm transition-all hover:bg-slate-50 md:flex-row "
         >
-            <div class="flex flex-col items-start space-y-1">
+            <div class="flex flex-col items-center space-y-1 md:items-start ">
                 <span>{task.title}</span>
-                <span class="ml-1 text-xs text-gray-500">
+                <span class="text-xs text-gray-500 md:ml-1 ">
                     ({task.description})
                 </span>
             </div>
