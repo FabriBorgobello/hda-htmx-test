@@ -48,7 +48,7 @@ export const TaskItem: FC<{ task: Task }> = ({ task }) => {
                     hx-delete={`/api/tasks/${task.id}`}
                     hx-confirm="Are you sure you want to delete this task?"
                     hx-swap="outerHTML"
-                    hx-target="#task-list"
+                    hx-target={`#task-${task.id}`}
                     class="ml-4 rounded bg-red-500 px-3 py-1 text-xs text-white hover:bg-red-600"
                 >
                     Delete

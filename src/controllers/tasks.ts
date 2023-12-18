@@ -30,8 +30,7 @@ export async function getTaskById(id: Task['id']) {
 
 export async function createTask(task: TaskInput) {
     const newTask: Task = { ...task, id: uuid(), status: 'OPEN' as const };
-    Tasks.unshift(newTask);
-    return Tasks;
+    return newTask;
 }
 
 export async function updateTask(id: Task['id'], task: TaskUpdate) {

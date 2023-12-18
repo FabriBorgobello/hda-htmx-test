@@ -17,7 +17,8 @@ export const Layout: FC = ({ children }) => {
                         crossorigin="anonymous"
                     ></script>
                     <script src="https://unpkg.com/htmx.org/dist/ext/disable-element.js"></script>
-
+                    {/* To remove elements from the DOM after delay*/}
+                    <script src="https://unpkg.com/htmx.org/dist/ext/remove-me.js"></script>
                     <link rel="stylesheet" href="static/output.css" />
                 </head>
                 {children}

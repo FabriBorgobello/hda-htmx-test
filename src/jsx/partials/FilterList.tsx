@@ -29,7 +29,7 @@ export const FilterList: FC<{ filters: Filter[] }> = ({ filters }) => {
             </div>
             <button
                 type="submit"
-                class="flex w-full justify-center gap-2 rounded-md bg-slate-50 px-3 py-2 text-sm text-black transition-all hover:bg-slate-900 hover:text-white active:scale-95 active:bg-slate-800 active:text-white disabled:cursor-not-allowed disabled:bg-gray-100 disabled:hover:bg-gray-100 disabled:hover:text-black disabled:active:scale-100 disabled:active:bg-gray-500 disabled:active:text-black"
+                class="flex w-full justify-center gap-2 rounded-md border bg-slate-50 px-3 py-2 text-sm text-black transition-all hover:bg-slate-900 hover:text-white active:scale-95 active:bg-slate-800 active:text-white disabled:cursor-not-allowed disabled:bg-gray-100 disabled:hover:bg-gray-100 disabled:hover:text-black disabled:active:scale-100 disabled:active:bg-gray-500 disabled:active:text-black"
             >
                 Apply Filters
             </button>

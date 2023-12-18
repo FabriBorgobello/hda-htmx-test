@@ -5,8 +5,10 @@ import {
     getTasks,
     updateTask,
 } from '@/controllers/tasks';
+import { CreationBar } from '@/jsx/partials/CreationBar';
 import { TaskItem } from '@/jsx/partials/TaskItem';
 import { TaskList } from '@/jsx/partials/TaskList';
+import { Toast } from '@/jsx/partials/Toast';
 import { TaskInput, TaskUpdate } from '@/types';
 import { Hono } from 'hono';
 
@@ -30,8 +32,14 @@ tasksRouter.get('/:id', async (c) => {
 
 tasksRouter.post('/', async (c) => {
     const body = await c.req.parseBody<TaskInput>();
-    const tasks = await createTask(body);
-    return c.html(<TaskList tasks={tasks} />);
+    const task = await createTask(body);
+    return c.html(
+        <>
+            <TaskItem task={task} />
+            <Toast message="Task created" title="Success" type="success" />
+            <CreationBar />
+        </>
+    );
 });
 
 tasksRouter.put('/:id', async (c) => {
@@ -46,5 +54,11 @@ tasksRouter.delete('/:id', async (c) => {
     const id = c.req.param('id');
     const tasks = await deleteTask(id);
     if (!tasks) return c.json({ message: 'Task not found' }, 404);
-    return c.html(<TaskList tasks={tasks} />);
+    // HTMX deletes the element if the response is 200 + empty body
+    // Toast is not part of the proper response because it's using hx-swap-oob
+    // see: https://htmx.org/attributes/hx-delete/
+    return c.html(
+        <Toast message="Task deleted" title="Success" type="success" />,
+        200
+    );
 });
