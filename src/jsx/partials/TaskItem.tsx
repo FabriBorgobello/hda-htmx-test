@@ -8,13 +8,13 @@ export const TaskItem: FC<{ task: Task }> = ({ task }) => {
             id={`task-${task.id}`}
             class="flex w-full flex-col items-center justify-between gap-y-5 space-x-4 rounded-md border-2 border-gray-100 bg-white p-4 text-sm transition-all hover:bg-slate-50 md:flex-row "
         >
-            <div class="flex flex-col items-center space-y-1 md:items-start ">
+            <div class="flex flex-col items-center space-y-1 text-center sm:text-left md:items-start">
                 <span>{task.title}</span>
                 <span class="text-xs text-gray-500 md:ml-1 ">
                     ({task.description})
                 </span>
             </div>
-            <div class="flex items-center">
+            <div class="flex flex-col items-center gap-x-4 gap-y-2 sm:flex-row">
                 <div class="relative cursor-pointer rounded-full bg-slate-950 px-2 py-1 text-xs text-white hover:bg-slate-900">
                     <span
                         onclick="
@@ -49,7 +49,7 @@ export const TaskItem: FC<{ task: Task }> = ({ task }) => {
                     hx-confirm="Are you sure you want to delete this task?"
                     hx-swap="outerHTML"
                     hx-target={`#task-${task.id}`}
-                    class="ml-4 rounded bg-red-500 px-3 py-1 text-xs text-white hover:bg-red-600"
+                    class="rounded bg-red-500 px-3 py-1 text-xs text-white hover:bg-red-600"
                 >
                     Delete
                 </button>

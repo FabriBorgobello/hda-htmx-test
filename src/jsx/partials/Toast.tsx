@@ -10,13 +10,13 @@ export const Toast: FC<ToastProps> = ({ title, message, type }) => {
     return (
         <div
             hx-ext="remove-me"
-            class="fixed bottom-4 right-4 z-10"
+            class="fixed bottom-4 right-1/2 z-10 w-full max-w-full translate-x-1/2 transform sm:right-4 sm:w-auto sm:translate-x-0 sm:transform-none"
             id="toast"
             hx-swap-oob="true" // Out of band. See https://htmx.org/attributes/hx-swap-oob/
         >
             <div
                 remove-me="3s"
-                class="flex items-start gap-x-4 rounded-md bg-white p-4 shadow-lg"
+                class="flex items-start gap-x-4 rounded-md bg-white p-4 shadow-lg sm:min-w-[300px]"
             >
                 {type === 'success' ? (
                     <svg

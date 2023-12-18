@@ -602,6 +602,10 @@ video {
   right: 1rem;
 }
 
+.right-1\/2 {
+  right: 50%;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -621,6 +625,18 @@ video {
 
 .ml-auto {
   margin-left: auto;
+}
+
+.ml-6 {
+  margin-left: 1.5rem;
+}
+
+.ml-\[5rem\] {
+  margin-left: 5rem;
+}
+
+.mb-8 {
+  margin-bottom: 2rem;
 }
 
 .flex {
@@ -659,8 +675,16 @@ video {
   width: 1.5rem;
 }
 
+.min-w-\[300px\] {
+  min-width: 300px;
+}
+
 .max-w-5xl {
   max-width: 64rem;
+}
+
+.max-w-full {
+  max-width: 100%;
 }
 
 .flex-1 {
@@ -678,6 +702,11 @@ video {
 
 .translate-y-6 {
   --tw-translate-y: 1.5rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.translate-x-1\/2 {
+  --tw-translate-x: 50%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -737,6 +766,10 @@ video {
 
 .gap-y-6 {
   row-gap: 1.5rem;
+}
+
+.gap-y-2 {
+  row-gap: 0.5rem;
 }
 
 .space-x-4 > :not([hidden]) ~ :not([hidden]) {
@@ -873,6 +906,10 @@ video {
 
 .text-left {
   text-align: left;
+}
+
+.text-center {
+  text-align: center;
 }
 
 .text-2xl {
@@ -1119,9 +1156,52 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+@media (min-width: 640px) {
+  .sm\:bottom-4 {
+    bottom: 1rem;
+  }
+
+  .sm\:right-4 {
+    right: 1rem;
+  }
+
+  .sm\:w-auto {
+    width: auto;
+  }
+
+  .sm\:min-w-\[300px\] {
+    min-width: 300px;
+  }
+
+  .sm\:translate-x-0 {
+    --tw-translate-x: 0px;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .sm\:transform-none {
+    transform: none;
+  }
+
+  .sm\:flex-row {
+    flex-direction: row;
+  }
+
+  .sm\:flex-col {
+    flex-direction: column;
+  }
+
+  .sm\:text-left {
+    text-align: left;
+  }
+}
+
 @media (min-width: 768px) {
   .md\:ml-1 {
     margin-left: 0.25rem;
+  }
+
+  .md\:min-w-\[300px\] {
+    min-width: 300px;
   }
 
   .md\:flex-row {
