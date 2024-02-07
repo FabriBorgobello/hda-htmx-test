@@ -16,6 +16,7 @@ To get started with this application, follow these steps:
 2. Start the development server using `npm run dev`.
 3. Access the application in your web browser: [http://localhost:3000](http://localhost:3000).
 
-> NOTES:
-> This application **DOES NOT** use React, Vue, or any other client-side JavaScript framework.
-> This application **DOES NOT** have a database. It uses an in-memory data store.
+## NOTES:
+
+-   This application **DOES NOT** use React, Vue, or any other client-side JavaScript framework.
+-   This application **DOES NOT** have a database. It uses an in-memory data store.
