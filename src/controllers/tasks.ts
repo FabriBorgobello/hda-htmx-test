@@ -2,48 +2,52 @@ import { Tasks } from '@/data';
 import { Task, TaskInput, TaskUpdate } from '@/types';
 import { uuid } from '@/utils/uuid';
 
-export async function getTasks(
-    query: {
-        status?: Task['status'];
-        category?: Task['category'];
-    } = {}
-) {
-    const { status, category } = query;
+class Database {
+    private tasks: Task[];
 
-    if (status && category) {
-        return Tasks.filter(
-            (task) => task.status === status && task.category === category
+    constructor() {
+        this.tasks = Tasks;
+    }
+
+    public async getTasks(query = {}) {
+        const { status, category } = query as {
+            status?: Task['status'];
+            category?: Task['category'];
+        };
+
+        return this.tasks.filter(
+            (task) =>
+                (!status || task.status === status) &&
+                (!category || task.category === category)
         );
     }
-    if (status) {
-        return Tasks.filter((task) => task.status === status);
+
+    public async getTaskById(id: Task['id']) {
+        return this.tasks.find((task) => task.id === id);
     }
-    if (category) {
-        return Tasks.filter((task) => task.category === category);
+
+    public async createTask(taskInput: TaskInput) {
+        const newTask = { ...taskInput, id: uuid(), status: 'OPEN' as const };
+        this.tasks.push(newTask);
+        return newTask;
     }
-    return Tasks;
+
+    public async updateTask(id: Task['id'], taskUpdate: TaskUpdate) {
+        const taskIndex = this.tasks.findIndex((task) => task.id === id);
+        if (taskIndex !== -1) {
+            this.tasks[taskIndex] = { ...this.tasks[taskIndex], ...taskUpdate };
+            return this.tasks[taskIndex];
+        }
+    }
+
+    public async deleteTask(id: Task['id']) {
+        const taskIndex = this.tasks.findIndex((task) => task.id === id);
+        if (taskIndex !== -1) {
+            this.tasks.splice(taskIndex, 1);
+            return true;
+        }
+        return false;
+    }
 }
 
-export async function getTaskById(id: Task['id']) {
-    return Tasks.find((task) => task.id === id);
-}
-
-export async function createTask(task: TaskInput) {
-    const newTask: Task = { ...task, id: uuid(), status: 'OPEN' as const };
-    return newTask;
-}
-
-export async function updateTask(id: Task['id'], task: TaskUpdate) {
-    const taskIndex = Tasks.findIndex((task) => task.id === id);
-    if (taskIndex === -1) return undefined;
-    const updatedTask = { ...Tasks[taskIndex], ...task };
-    Tasks[taskIndex] = updatedTask;
-    return updatedTask;
-}
-
-export async function deleteTask(id: Task['id']) {
-    const taskIndex = Tasks.findIndex((task) => task.id === id);
-    if (taskIndex === -1) return undefined;
-    Tasks.splice(taskIndex, 1);
-    return Tasks;
-}
+export const db = new Database();

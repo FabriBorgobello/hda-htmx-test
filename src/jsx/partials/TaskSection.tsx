@@ -1,9 +1,9 @@
 import type { FC } from 'hono/jsx';
 import { TaskList } from './TaskList';
-import { getTasks } from '@/controllers/tasks';
+import { db } from '@/controllers/tasks';
 
 export const TaskSection: FC = async () => {
-    const tasks = await getTasks();
+    const tasks = await db.getTasks();
 
     return (
         <section class="space-y-4">
